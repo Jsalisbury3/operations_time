@@ -6,7 +6,7 @@ describe('Digital time', () => {
       expect(at(6).toString()).toEqual('06:00');
     });
 
-    xtest('past the hour', () => {
+    test('past the hour', () => {
       expect(at(12, 4).toString()).toEqual('12:04');
     });
 
@@ -78,6 +78,12 @@ describe('Digital time', () => {
       expect(at(-121, -5810).toString()).toEqual('22:10');
     });
 
+
+
+
+
+
+
     describe('Add & subtract minutes', () => {
       xtest('add minutes', () => {
         expect(at(10, 0).plus(3).toString()).toEqual('10:03');
@@ -143,6 +149,12 @@ describe('Digital time', () => {
         expect(at(2, 20).minus(3000).toString()).toEqual('00:20');
       });
     });
+
+
+
+
+
+
 
     describe('Construct two invocations, set times, test if they are equal', () => {
       xtest('digital times with same time', () => {

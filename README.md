@@ -30,7 +30,7 @@ $ npm test
 ```
 
 
-## Instructions
+## Instructionss
 
 1. Modify digital-time.js to satisfy the test spec. The test spec is defined in digital-time.spec.js.
 
