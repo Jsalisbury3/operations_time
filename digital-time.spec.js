@@ -10,19 +10,19 @@ describe('Digital time', () => {
       expect(at(12, 4).toString()).toEqual('12:04');
     });
 
-    xtest('midnight is zero hours', () => {
+    test('midnight is zero hours', () => {
       expect(at(24, 0).toString()).toEqual('00:00');
     });
 
-    xtest('hour rolls over', () => {
+    test('hour rolls over', () => {
       expect(at(26, 0).toString()).toEqual('02:00');
     });
 
-    xtest('hour rolls over continuously', () => {
+    test('hour rolls over continuously', () => {
       expect(at(101, 0).toString()).toEqual('05:00');
     });
 
-    xtest('sixty minutes is next hour', () => {
+    test('sixty minutes is next hour', () => {
       expect(at(1, 65).toString()).toEqual('02:05');
     });
 

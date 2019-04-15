@@ -60,8 +60,6 @@ function at(hours, minutes){
     timeArr[3] = "0"
     timeArr[4] = minutes
   }
-
-
   //if minutes are empty
   if(minutes === undefined){
     timeArr[3] = "0"
@@ -76,7 +74,75 @@ function at(hours, minutes){
     // timeArr[0] = hours;
     // timeArr[1] = ':'
   }
-  
+
+  // if minutes are greater then 9 but less then 60
+  if(minutes>9 && minutes<60){
+    const minutesSplitIntoArray = (""+minutes).split("")
+    timeArr[3] = minutesSplitIntoArray[0]
+    timeArr[4] = minutesSplitIntoArray[1]
+  }
+  // midnight is zero hours
+  if(hours===24 && minutes===0){
+    timeArr[0] = '0'
+    timeArr[1] = '0'
+    timeArr[2] = ':'
+    timeArr[3] = '0'
+    timeArr[4] = '0'
+  }
+  // hours roll over
+  if(hours>24){
+    var divided = hours/24;
+    var roundedDivided = Math.floor(divided);
+    var takeOutAmount = roundedDivided*24;
+    var correntRolloverRemaining = hours - takeOutAmount;
+    if(correntRolloverRemaining<9){
+      timeArr[0] = '0'
+      timeArr[1] = correntRolloverRemaining
+    }else{
+      var rollOverSplit = (""+correntRolloverRemaining).split("")
+      timeArr[0] = rollOverSplit[0];
+      timeArr[1] = rollOverSplit[1];
+    }
+  }
+
+  // sixty minutes is next hour
+  if(minutes >= 60){
+    var minuteDivideByHour = Math.floor(minutes/60)
+   
+    var hoursToBeAdded = hours+minuteDivideByHour
+   
+    var remainingMinutes = Math.abs(minuteDivideByHour*60 - minutes)
+   
+    minutes = remainingMinutes
+    
+    hours = hoursToBeAdded
+ 
+    var rollOverSplitHours = (""+hours).split("")
+    
+    if(rollOverSplitHours[1] === undefined){
+      rollOverSplitHours[1] = rollOverSplitHours[0]
+      rollOverSplitHours[0] = '0'
+      
+    }
+      timeArr[0] = rollOverSplitHours[0];
+    console.log(rollOverSplitHours[0])
+      timeArr[1] = rollOverSplitHours[1];
+    console.log(rollOverSplitHours[1])
+    var rollOverSplitMinutes = (""+minutes).split("")
+    if(rollOverSplitMinutes[1] === undefined){
+      rollOverSplitMinutes[1] = rollOverSplitMinutes[0]
+      rollOverSplitMinutes[0] = '0'
+    }
+    timeArr[3] = rollOverSplitMinutes[0]
+    console.log(rollOverSplitMinutes[0])
+    timeArr[4] = rollOverSplitMinutes[1]
+    console.log(rollOverSplitMinutes[1])
+    
+
+
+  }
+
+
   return timeArr.join("")
  
 }
